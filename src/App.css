@@ -21,6 +21,7 @@
 /* ---------- notebook shell ---------- */
 
 .notebook {
+  position: relative;
   display: flex;
   align-items: stretch;
   width: 100%;
@@ -45,6 +46,8 @@
 }
 
 .notebook__page-wrap {
+  position: relative;
+  z-index: 2;
   flex: 1 1 auto;
   min-width: 0;
   background: var(--paper);
@@ -251,42 +254,54 @@
 /* ---------- term tabs ---------- */
 
 .tabs {
-  flex: 0 0 auto;
+  position: absolute;
+  top: 40px;
+  right: -32px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 40px 0 0 6px;
+  align-items: flex-end;
+  gap: 14px;
 }
 
 .tabs__tab {
   --tab-color: var(--tab-coral);
-  width: 62px;
-  padding: 10px 8px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  padding: 14px 8px;
   border: none;
   border-radius: 0 6px 6px 0;
   background-image: var(--crayon-grain);
   background-color: var(--tab-color);
   color: #fff9ec;
   font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  text-align: center;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
   cursor: pointer;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  transform: translateX(-16px);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.28);
   transition:
-    transform 180ms ease,
-    box-shadow 180ms ease;
+    width 200ms ease,
+    transform 160ms ease,
+    box-shadow 200ms ease;
 }
 
-.tabs__tab:hover {
-  transform: translateX(-8px);
+.tabs__tab:hover:not([aria-selected='true']) {
+  transform: translateX(3px);
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.34);
 }
 
 .tabs__tab[aria-selected='true'] {
-  transform: translateX(4px);
-  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+  width: 92px;
+  z-index: 3;
+  writing-mode: horizontal-tb;
+  font-size: 0.78rem;
+  box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.42);
 }
 
 /* ---------- responsive ---------- */
@@ -326,18 +341,27 @@
   }
 
   .tabs {
+    position: static;
     order: -1;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: stretch;
     padding: 16px 20px 0;
   }
 
   .tabs__tab {
+    width: auto;
+    height: auto;
+    padding: 8px 14px;
+    writing-mode: horizontal-tb;
     transform: none;
   }
 
-  .tabs__tab:hover,
   .tabs__tab[aria-selected='true'] {
+    width: auto;
+  }
+
+  .tabs__tab:hover:not([aria-selected='true']) {
     transform: translateY(-3px);
   }
 }
