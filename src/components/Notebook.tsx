@@ -16,7 +16,7 @@ export function Notebook() {
         <header className="notebook__cover">
           <span className="notebook__tape" aria-hidden="true" />
           <h1 className="notebook__title">Adam Montgomery</h1>
-          <p className="notebook__subtitle">Co-op reflections over the work terms</p>
+          <p className="notebook__subtitle">Work Term Reports</p>
         </header>
 
         <JournalPage

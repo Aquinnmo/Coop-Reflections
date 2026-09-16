@@ -2,38 +2,22 @@ export type Reflection = {
   id: string
   tabLabel: string
   tabColor: string
-  title: string
-  company: string
-  role: string
-  term: string
-  body: string[]
-  highlight: string
-  stats: { emoji: string; label: string; value: string }[]
+  paragraphs: string[]
 }
 
-// Placeholder entries — swap in real reflections as each term wraps up.
-// Add a new object to the front of this array for each new term.
 export const reflections: Reflection[] = [
   {
-    id: 'su25',
+    id: 'su26',
     tabLabel: 'Summer \'26',
     tabColor: 'var(--tab-coral)',
-    title: 'The SALSA Tasting',
-    company: 'SPS Commerce',
-    role: 'Software Engineering Intern',
-    term: 'Summer 2025',
-    highlight: 'the robot arm and I reached an understanding',
-    body: [
-      'Week one, my badge photo made me look like I was being booked for a crime, and honestly the vibe of the internship never fully recovered from that first impression. By week two the robot arm and I reached an understanding: it would stop trying to hand me the wrong bin, and I would stop yelling "no, the OTHER left" at a machine with no concept of handedness.',
-      'The actual work was mostly calibration scripts and a state machine that I rewrote four times because I kept discovering new ways for a conveyor belt to surprise me. Turns out "industrial hardware" is just software with worse error messages and higher stakes. I learned more about debouncing a button in three weeks here than in three semesters of lecture slides.',
-      'Lowest point: I flashed the wrong firmware to the demo unit forty minutes before a client walkthrough and had to explain, calmly, why the arm was now trying to fist-bump a clipboard. Highest point: fixing it in thirty-eight of those forty minutes and never telling anyone how close it was. I am telling everyone now.',
-      'What I am actually taking with me: hardware forgives nothing, but it also does not gaslight you the way a flaky test suite does — when something is wrong, something is physically, visibly wrong. There is a strange comfort in that. Also, wear the safety glasses even when you are "just looking."',
-    ],
-    stats: [
-      { emoji: '🦾', label: 'Firmware flashes', value: '61' },
-      { emoji: '🧯', label: 'Minor fire drills (real)', value: '1' },
-      { emoji: '🥤', label: 'Vending machine visits', value: '89' },
-      { emoji: '🩹', label: 'Bandaids required', value: '2' },
+    paragraphs: [
+      'I had the pleasure of working at SPS Commerce on the System Automation Framework team this past work term. I was the first student from Guelph that they have hired for this Software Engineering role. From the start, I was treated as just another member of the team, and I couldn’t be happier with how this term turned out. At SPS, our team is a “platform” team, meaning that the team enables other teams at SPS while shipping production code in multiple services. The flagship product the team owns contains 8 services that 4 other teams work on concurrently as well. This handles all document ingestion into our electronic data interchange network. Our team is responsible for making sure the backbone of all these services is easy to work with. The team handles: new features, code reviews, deployments, platform-level refactors, and optimizations. I have done all these duties during my time with the team.',
+      'The defining project of my time with SPS Commerce comes in the form of a new deployment assistant that I took from the planning stage through to the full implementation. Before the deployment assistant, deployments for our team were incredibly cumbersome. Every service had up to 3 Chrome tabs you would have to manually babysit to monitor deployment progress. With owning 8 main services, a regular deployment can require 4+ pipelines to be run. To monitor the success of the changes, you also must inspect additional tabs for the service. Put in simple terms, a basic deployment can require an engineer to manually babysit over 15 tabs when all they are doing is watching for errors and warning lights. Not only is this incredibly inefficient for the developer doing the deploy with constant context switching, but it is next to impossible to deploy with confidence. Often, verifying success gets forgotten because the current system splits attention over too many systems. On top of this, other responsibilities can pull the developer’s focus away from the deployment. The deployment assistant completely redesigns this workflow, pulling all monitoring into a single Slack thread with all the verifications and observability links live updating within it. Should something go wrong with the deployment, you will get notified, and everything is quick-linked so you can dive into the details right from the thread.',
+      'Now instead of having to babysit a list of tabs, the developer can continue their other work, knowing they will be notified when the deployment requires their attention. Reducing these click-throughs turns a deployment from long stretches of constant context switching into productive work time, allowing the developer to focus on their other responsibilities. This has a large impact as deployments account for roughly 30% of the team’s support tickets. The team has received approximately 300 deployment requests in the first half of this year alone, and volume is only increasing with the shift towards AI-assisted development. The team is currently using the assistant, but I have also planned a second iteration with a list of additional features to help it even better fit the team’s long-term goal to deploy changes with confidence. This plan focuses on currently blocked features that will allow other teams to deploy their own code changes to our services and integrate with our other products.',
+      'I was also an active citizen at SPS. I supported other teams through the launch of our platform support agent, further helping reduce the support impact on our team. I was also a contributor to internal professional growth initiatives. I presented at multiple department-wide Know More to Be More meetings that help engineers learn more beyond their current niche. I was able to focus on my technical and non-technical presentation skills when presenting about ways developers can use Claude Design and my personal project, Timber. Both presentations helped engineers in the organization expand the breadth of their knowledge, and the Claude Design presentation in particular gained traction during my placement. Members of my team began using the tool to create idea showcases, mocks for features, and architecture diagrams after I showcased what it can do.',
+      'What I have learned at this placement will serve me well as I continue to grow my career and further my education. At a 1:1 check-in meeting with my manager, he mentioned that a peer told him when he first started his career that you should always aim to “Automate yourself out of a job.” That stuck with me. Through the deployment assistant, I helped a whole team of developers automate themselves out of one of their many responsibilities. This not only saves them from the tedium of deployments, but frees up time for them to work on delivering further value to the business. This works beyond the business case as well. I am continuing this pattern personally through Timber by setting up CI/CD pipelines to automate deployments and verify changes.',
+      'All this experience helped me thrive in this role and I truly believe I crushed all of my goals. My first goal was to communicate more clearly with technical and non-technical audiences. I delivered on this throughout the development of the deployment assistant when needing to describe my PRD for verifications and during regular sprint reviews. The natural extension of this goal was to improve my organization during problem solving so I can better ask for help when I am stuck. This one was critical to my success as it allowed me to keep iterating without getting stuck on setting up the problem I am trying to solve. These two goals both coalesced into my third one, communicating more effectively when I am actively problem solving. All of the little habits I learned during my time at SPS helped me exceed my expectations for this, and I couldn’t be happier with how this has accelerated my velocity as a developer.',
+      'I learned so much during my time with SPS, particularly by being surrounded by all the brilliant minds on my team. They have given me perspective on the habits that make a good software engineer. You have to always look for opportunities to automate, keep your users in the loop, and simplify processes. The team has given me real confidence in myself as a developer. I truly believe maintaining these qualities will propel me in my career well beyond a single co-op. This term also reinforced that this is what I want to do for my career, and I will be taking a cloud computing course in the winter because I have loved working with the technologies needed for the deployment assistant (Kubernetes in particular). I am so grateful to everyone on the team not only for the Co-op Student of the Year nomination, but also for everything I learned from them.',
     ],
   },
 ]
