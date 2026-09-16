@@ -193,7 +193,8 @@
 
 .project-timeline {
   position: relative;
-  margin: 20px 0 4px;
+  height: 136px;
+  margin: 0;
   padding: 18px 20px 14px;
   background: #fbf5e4;
   border: 1px solid rgba(34, 48, 74, 0.15);
@@ -284,6 +285,44 @@
   font-family: var(--body);
   font-size: 0.82rem;
   line-height: 1.35;
+}
+
+.report-photo {
+  position: relative;
+  width: min(72%, 420px);
+  margin: 34px auto;
+  padding: 10px 10px 12px;
+  background: #fbf5e4;
+  border: 1px solid rgba(34, 48, 74, 0.15);
+  box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.13);
+  transform: rotate(-0.6deg);
+}
+
+.report-photo::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 64px;
+  height: 20px;
+  margin-left: -32px;
+  background-color: rgba(217, 166, 62, 0.42);
+  background-image: var(--crayon-grain);
+  transform: rotate(2deg);
+}
+
+.report-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.report-photo figcaption {
+  margin-top: 9px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--pencil);
+  text-align: center;
 }
 
 .journal-page__footer {
@@ -387,6 +426,14 @@
   .project-timeline ol {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: 18px;
+  }
+
+  .project-timeline {
+    height: 170px;
+  }
+
+  .report-photo {
+    width: 88%;
   }
 
   .tabs {

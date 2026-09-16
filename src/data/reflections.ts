@@ -3,6 +3,17 @@ export type Reflection = {
   tabLabel: string
   tabColor: string
   paragraphs: string[]
+  roadmap?: {
+    title: string
+    beforeParagraph: number
+    steps: string[]
+  }
+  photo?: {
+    src: string
+    alt: string
+    caption: string
+    afterParagraph: number
+  }
 }
 
 export const reflections: Reflection[] = [
@@ -10,6 +21,17 @@ export const reflections: Reflection[] = [
     id: 'su26',
     tabLabel: 'Summer \'26',
     tabColor: 'var(--tab-coral)',
+    roadmap: {
+      title: 'Deployment Assistant roadmap',
+      beforeParagraph: 2,
+      steps: ['Plan', 'Build', 'Launch', 'Next'],
+    },
+    photo: {
+      src: '/sps-lunch.jpg',
+      alt: 'The SPS Commerce team sharing a meal around a restaurant table',
+      caption: 'Lunch with the team on the final day',
+      afterParagraph: 3,
+    },
     paragraphs: [
       'I had the pleasure of working at SPS Commerce on the System Automation Framework team this past work term. I was the first student from Guelph that they have hired for this Software Engineering role. From the start, I was treated as just another member of the team, and I couldn’t be happier with how this term turned out. At SPS, our team is a “platform” team, meaning that the team enables other teams at SPS while shipping production code in multiple services. The flagship product the team owns contains 8 services that 4 other teams work on concurrently as well. This handles all document ingestion into our electronic data interchange network. Our team is responsible for making sure the backbone of all these services is easy to work with. The team handles: new features, code reviews, deployments, platform-level refactors, and optimizations. I have done all these duties during my time with the team.',
       'The defining project of my time with SPS Commerce comes in the form of a new deployment assistant that I took from the planning stage through to the full implementation. Before the deployment assistant, deployments for our team were incredibly cumbersome. Every service had up to 3 Chrome tabs you would have to manually babysit to monitor deployment progress. With owning 8 main services, a regular deployment can require 4+ pipelines to be run. To monitor the success of the changes, you also must inspect additional tabs for the service. Put in simple terms, a basic deployment can require an engineer to manually babysit over 15 tabs when all they are doing is watching for errors and warning lights. Not only is this incredibly inefficient for the developer doing the deploy with constant context switching, but it is next to impossible to deploy with confidence. Often, verifying success gets forgotten because the current system splits attention over too many systems. On top of this, other responsibilities can pull the developer’s focus away from the deployment. The deployment assistant completely redesigns this workflow, pulling all monitoring into a single Slack thread with all the verifications and observability links live updating within it. Should something go wrong with the deployment, you will get notified, and everything is quick-linked so you can dive into the details right from the thread.',
