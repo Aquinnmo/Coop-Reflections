@@ -138,6 +138,16 @@
   color: var(--pencil);
 }
 
+.journal-page__eyebrow {
+  margin-bottom: 7px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--margin-red);
+}
+
 .journal-page__body {
   position: relative;
   padding: 12px 44px 8px 56px;
@@ -161,19 +171,158 @@
 
 .journal-page__body p {
   font-family: var(--body);
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   line-height: 34px;
   color: var(--ink);
-  margin: 0 0 6px;
+  margin: 0;
+  text-indent: 2em;
 }
 
-.ink-mark {
-  color: inherit;
-  padding: 0 1px 5px;
-  background-repeat: repeat-x;
-  background-position: 0 100%;
-  background-size: 22px 8px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='8' viewBox='0 0 22 8'%3E%3Cpath d='M0,4.5 Q3,1 6,4 T12,4.3 T18,4 T22,4.5' stroke='%23c1454a' stroke-width='2.3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+.report-section {
+  break-inside: avoid;
+  margin-bottom: 22px;
+}
+
+.report-section h3 {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: 1.22rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.project-timeline {
+  position: relative;
+  height: 136px;
+  margin: 0;
+  padding: 18px 20px 14px;
+  background: #fbf5e4;
+  border: 1px solid rgba(34, 48, 74, 0.15);
+  box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.13);
+  transform: rotate(0.4deg);
+}
+
+.project-timeline::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 46px;
+  height: 18px;
+  margin-left: -23px;
+  background-image: var(--crayon-grain);
+  background-color: rgba(169, 196, 222, 0.55);
+  transform: rotate(-3deg);
+}
+
+.project-timeline__label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pencil);
+  margin: 0 0 8px;
+  border-bottom: 1px dashed var(--paper-edge);
+  padding-bottom: 6px;
+}
+
+.project-timeline ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.project-timeline li {
+  position: relative;
+  padding-top: 13px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--ink);
+}
+
+.project-timeline li::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: var(--tab-coral);
+}
+
+.project-timeline li::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--tab-coral);
+  border-radius: 50%;
+  background: #fbf5e4;
+}
+
+.project-timeline li > span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--margin-red);
+}
+
+.project-timeline li strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 0.78rem;
+}
+
+.project-timeline li p {
+  margin: 0;
+  font-family: var(--body);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.report-photo {
+  position: relative;
+  width: min(72%, 420px);
+  margin: 34px auto;
+  padding: 10px 10px 12px;
+  background: #fbf5e4;
+  border: 1px solid rgba(34, 48, 74, 0.15);
+  box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.13);
+  transform: rotate(-0.6deg);
+}
+
+.report-photo::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 64px;
+  height: 20px;
+  margin-left: -32px;
+  background-color: rgba(217, 166, 62, 0.42);
+  background-image: var(--crayon-grain);
+  transform: rotate(2deg);
+}
+
+.report-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.report-photo figcaption {
+  margin-top: 9px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--pencil);
+  text-align: center;
 }
 
 .journal-page__footer {
@@ -188,67 +337,6 @@
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   color: var(--pencil);
-}
-
-/* ---------- index card aside ---------- */
-
-.index-card {
-  position: relative;
-  float: right;
-  width: 178px;
-  margin: 4px 0 20px 24px;
-  padding: 14px 14px 12px;
-  background: #fbf5e4;
-  border: 1px solid rgba(34, 48, 74, 0.15);
-  box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.18);
-  transform: rotate(2.5deg);
-}
-
-.index-card::before {
-  content: '';
-  position: absolute;
-  top: -9px;
-  left: 50%;
-  width: 46px;
-  height: 18px;
-  margin-left: -23px;
-  background-image: var(--crayon-grain);
-  background-color: rgba(169, 196, 222, 0.55);
-  transform: rotate(-3deg);
-}
-
-.index-card__label {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--pencil);
-  margin: 0 0 8px;
-  border-bottom: 1px dashed var(--paper-edge);
-  padding-bottom: 6px;
-}
-
-.index-card ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.index-card li {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: var(--ink);
-}
-
-.index-card li strong {
-  font-size: 0.85rem;
 }
 
 /* ---------- term tabs ---------- */
@@ -335,9 +423,17 @@
     margin: 0 26px;
   }
 
-  .index-card {
-    float: none;
-    margin: 4px auto 20px;
+  .project-timeline ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 18px;
+  }
+
+  .project-timeline {
+    height: 170px;
+  }
+
+  .report-photo {
+    width: 88%;
   }
 
   .tabs {

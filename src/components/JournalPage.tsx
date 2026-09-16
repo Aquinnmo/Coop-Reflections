@@ -1,17 +1,5 @@
-import type { ReactNode } from 'react'
+import { Fragment } from 'react'
 import type { Reflection } from '../data/reflections'
-
-function withHighlight(text: string, phrase: string): ReactNode {
-  const idx = text.indexOf(phrase)
-  if (idx === -1) return text
-  return (
-    <>
-      {text.slice(0, idx)}
-      <mark className="ink-mark">{phrase}</mark>
-      {text.slice(idx + phrase.length)}
-    </>
-  )
-}
 
 type Props = {
   reflection: Reflection
@@ -19,40 +7,42 @@ type Props = {
 }
 
 export function JournalPage({ reflection, pageNumber }: Props) {
-  const highlightIndex = reflection.body.findIndex((p) =>
-    p.includes(reflection.highlight),
-  )
-
   return (
     <article className="journal-page" aria-live="polite">
-      <div className="journal-page__header">
-        <h2 className="journal-page__title">{reflection.title}</h2>
-        <p className="journal-page__meta">
-          {reflection.company} &middot; {reflection.role} &middot;{' '}
-          {reflection.term}
-        </p>
-      </div>
-
       <div className="journal-page__body">
-        {reflection.body.map((para, i) => (
-          <p key={i}>
-            {i === highlightIndex
-              ? withHighlight(para, reflection.highlight)
-              : para}
-          </p>
-        ))}
-
-        <aside className="index-card">
-          <p className="index-card__label">quick tally</p>
-          <ul>
-            {reflection.stats.map((stat) => (
-              <li key={stat.label}>
-                <span aria-hidden="true">{stat.emoji}</span> {stat.label}
-                <strong>{stat.value}</strong>
-              </li>
-            ))}
-          </ul>
-        </aside>
+        <section className="report-section">
+          {reflection.paragraphs.map((paragraph, index) => (
+            <Fragment key={paragraph}>
+              {reflection.roadmap?.beforeParagraph === index && (
+                <figure className="project-timeline">
+                  <figcaption className="project-timeline__label">
+                    {reflection.roadmap.title}
+                  </figcaption>
+                  <ol>
+                    {reflection.roadmap.steps.map((step) => (
+                      <li key={step}>
+                        <strong>{step}</strong>
+                      </li>
+                    ))}
+                  </ol>
+                </figure>
+              )}
+              <p>{paragraph}</p>
+              {reflection.photo?.afterParagraph === index && (
+                <figure className="report-photo">
+                  <img
+                    src={reflection.photo.src}
+                    alt={reflection.photo.alt}
+                    width="3000"
+                    height="4000"
+                    loading="lazy"
+                  />
+                  <figcaption>{reflection.photo.caption}</figcaption>
+                </figure>
+              )}
+            </Fragment>
+          ))}
+        </section>
       </div>
 
       <div className="journal-page__footer">
